@@ -4,17 +4,8 @@ let input = [];
 const data = fs.readFileSync("input.txt", { encoding: "utf8" });
 input = data.toString().split(",").filter(el => el !== '').map(Number);
 
-const { maxHorizontalPos, minHorizontalPos } = input.reduce((acc, curr, index) => {
-	if (index === 0) {
-		acc.maxHorizontalPos = curr;
-		acc.minHorizontalPos = curr;
-		return acc;
-	}
-
-	if (curr > acc.maxHorizontalPos) acc.maxHorizontalPos = curr;	
-	if (curr < acc.minHorizontalPos) acc.minHorizontalPos = curr;
-	return acc;
-}, { maxHorizontalPos: 0, minHorizontalPos: 0 });
+const minHorizontalPos = Math.min(...input);
+const maxHorizontalPos = Math.max(...input);
 
 const positionsMoved = [];
 
